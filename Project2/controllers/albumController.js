@@ -93,6 +93,5 @@ module.exports = function(app){
         catch (e) {
             res.send(e);
         } 
-    });
-            
+    });       
 };

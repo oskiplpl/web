@@ -1,5 +1,5 @@
 var express = require('express');
-var todoController = require('./controllers/todoController');
+var mainController = require('./controllers/mainController');
 
 var app = express();
 
@@ -7,6 +7,6 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('./public'));
 
-todoController(app);
+mainController(app);
 
-app.listen(3000);
+app.listen(4000);
