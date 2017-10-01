@@ -1,0 +1,29 @@
+<html>
+        <head>
+            <title>Images list</title>
+            <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+            <script src="/assets/todo-list.js"></script>
+            
+            <link href="/assets/style.css" rel="stylesheet" type="text/css" />
+        </head>
+    
+        <body>
+        
+                <% albums.forEach(function(album){ %>
+                    <div class='images-img'>
+                        <div class="description">
+                            <p>Artist: <%= album.artist%></p>
+                            <p>Album: <%= album.album%></p>
+                            <p>Year: <%= album.year%></p>
+                            <p>Length: <%= album.length%></p>
+                            <p>Genre: <%= album.genre%></p>     
+                        </div>
+                        <img src='/img/<%= album._id %>' />
+                        <div style="clear: both"></div>
+                    </div>            
+                <% }) %>
+        </body>
+    </html>

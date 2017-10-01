@@ -1,0 +1,63 @@
+body {
+    background-color: #070C25;
+    
+}
+
+#todo-table{
+    background-color: #292e47;
+    color: white;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    color: white;
+    background-color: #070C25;
+    border: solid 2px #181d56;
+    height: 30px;    
+}
+
+button {
+    background-color: #070C25;
+    border: solid 2px #181d56;
+    color: white;
+    font-size: 13px;
+    width: 70px;
+    height: 30px;
+}
+
+li {
+    list-style-type: none;
+    padding: 3px;  
+}
+
+li:hover {
+    text-decoration: line-through;
+    cursor: pointer;
+    list-style-type: none;    
+}
+
+.images-img {
+    width: 700px;
+    padding: 10px;
+    margin: 5px;
+    border: solid 2px #181d56;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.images-img img {
+    width: 100px;
+    height: 100px;
+    float: right;
+}
+
+.description {
+    float: left;
+}
+
+.description p {
+    margin: 1px;
+}
