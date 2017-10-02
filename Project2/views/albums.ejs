@@ -10,7 +10,8 @@
         </head>
     
         <body>
-                <% include layout.ejs %>
+            <% include layout.ejs %>                
+            <div class="content">
                 <% albums.forEach(function(album){ %>
                     <div class='images-img'>
                         <div class="description">
@@ -24,5 +25,8 @@
                         <div style="clear: both"></div>
                     </div>            
                 <% }) %>
+
+                <a href="add-album" class="add-album-btn"><div>Add album</div></a>
+            </div>
         </body>
     </html>

@@ -4,6 +4,12 @@ body {
     margin: 0;
 }
 
+.content {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #todo-table{
     background-color: #292e47;
     color: white;
@@ -83,3 +89,24 @@ button {
 .nav a:hover {
     color: #aaa;
 }
+
+.ul-nav {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-album-btn div{
+    width: 100px;
+    height: 24px;
+    text-align: center;
+    padding: 1px;
+    padding-top: 4px; 
+    border: solid 2px #181d56;   
+    color: white; 
+}
+
+.add-album-btn {
+    text-decoration: none;
+}
+

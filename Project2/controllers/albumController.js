@@ -39,6 +39,18 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 module.exports = function(app){
 
+    app.get('/add-album', function (req, res) {
+        try {
+            Album.find({}, function (err, doc) {
+                if (err) res.send(err);
+                res.render('addAlbum', { albums: doc });
+            });
+        }
+        catch (e) {
+            res.send(e);
+        } 
+    });
+
     app.get('/albums', function (req, res) {
         try {
             Album.find({}, function (err, doc) {
