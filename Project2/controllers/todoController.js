@@ -16,7 +16,8 @@ var Todo = mongoose.model('Todo', todoSchema);
 
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
-module.exports = function(app){
+module.exports = function(app){  
+
     app.get('/todo', function(req, res){
         //get data from db 
         Todo.find({}, function(err, data){

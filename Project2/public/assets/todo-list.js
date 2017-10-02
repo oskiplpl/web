@@ -15,7 +15,7 @@ $(document).ready(function(){
         return false;
     });
 
-    $('li').on('click', function(){
+    $('.li-todo').on('click', function(){
         var item = $(this).text().replace(/ /g, "-");
         $.ajax({
             type: 'DELETE',
