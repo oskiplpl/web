@@ -10,6 +10,17 @@ body {
     margin-right: auto;
 }
 
+.content label {
+    color: white;
+}
+
+.content input {
+    width: 100%;
+    padding: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;    
+}
+
 #todo-table{
     background-color: #292e47;
     color: white;

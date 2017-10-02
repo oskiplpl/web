@@ -25,7 +25,7 @@ module.exports = function(app){
             res.render('todo', { todos: data });
         });
     });
-
+ 
     app.post('/todo', urlencodedParser, function(req, res){
         //get data from view and add to db
         var newTodo = Todo(req.body).save(function(err, data){
