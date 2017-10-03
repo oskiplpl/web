@@ -1,6 +1,7 @@
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var fs = require('fs');
+var multer = require('multer');
 
 mongoose.Promise = global.Promise;
 //db
@@ -34,16 +35,26 @@ var album = new Album;
 //     if(err) throw err;
 // });
 
+//multer 
+var storage = multer.memoryStorage();
 
-var urlencodedParser = bodyParser.urlencoded({extended: false});
+var upload = multer({ storage: storage });
+
+//
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var img;
-module.exports = function(app){
+module.exports = function (app) {
 
-    // app.post('/add-album', urlencodedParser, function(req, res){
-    //     //get data from view and add to db
-    //     var img = req.body;
-    //     console.log(img);
-    // });
+    app.post('/add-album', upload.single('img'), function (req, res, next) {
+
+        console.log(req.body);
+        album.img.data = req.file.buffer;
+        album.img.contentType = req.file.mimetype;
+        album.save(function (err, a) {
+            if (err) throw err;
+        });
+        res.sendStatus(200);      
+    });
 
     app.get('/add-album', function (req, res) {
         try {
@@ -54,7 +65,7 @@ module.exports = function(app){
         }
         catch (e) {
             res.send(e);
-        } 
+        }
     });
 
     app.get('/albums', function (req, res) {
@@ -66,7 +77,7 @@ module.exports = function(app){
         }
         catch (e) {
             res.send(e);
-        } 
+        }
     });
 
     app.get('/img', function (req, res, next) {
@@ -84,18 +95,18 @@ module.exports = function(app){
         catch (e) {
             res.send(e);
         }
-        });
-        
+    });
+
     app.get('/img/:id', function (req, res) {
         try {
             Album.findOne({ _id: req.params.id }, function (err, doc) {
                 if (err)
                     res.send(err);
-                    res.setHeader('Cache-Control', 'public, max-age=3000000');
-                    res.contentType(doc.img.contentType);
-                    res.send(doc.img.data);
-                });
-            }
+                res.setHeader('Cache-Control', 'public, max-age=3000000');
+                res.contentType(doc.img.contentType);
+                res.send(doc.img.data);
+            });
+        }
         catch (e) {
             res.send(e);
         }
@@ -110,6 +121,6 @@ module.exports = function(app){
         }
         catch (e) {
             res.send(e);
-        } 
-    });       
+        }
+    });
 };
