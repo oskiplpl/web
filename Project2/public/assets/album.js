@@ -11,25 +11,19 @@ $(document).ready(function () {
         if (file) {
             // create reader
             var reader = new FileReader();
-            reader.readAsText(file);
-            reader.onload = function(e) {
+            reader.readAsBinaryString(file);
+            reader.onload = function (e) {
                 // browser completed reading file - display it
-                var img = { data: e.target.result, contentType: file.type };
-                var xhr = new XMLHttpRequest(); 
-                xhr.open("POST", "/add-album");
-                xhr.setRequestHeader("Content-Type", file.type);
-                xhr.onload = function (oEvent) { 
-                    alert("done");
-                };
-                xhr.send(img);
-                        // $.ajax({
-                        //     type: 'POST',
-                        //     url: '/add-album',
-                        //     data: img,
-                        //     success: function (data) {
-                        //         location.reload();
-                        //     }
-                        // });
+                var img = { value: e.target.result, contentType: 'multipart/form-data' };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/add-album',
+                    data: img,
+                    success: function (data) {
+                        location.reload();
+                    }
+                });
                 return false;
             };
         }

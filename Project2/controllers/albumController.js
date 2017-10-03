@@ -39,11 +39,11 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 var img;
 module.exports = function(app){
 
-    app.post('/add-album', urlencodedParser, function(req, res){
-        //get data from view and add to db
-        var img = req.body;
-        console.log(img);
-    });
+    // app.post('/add-album', urlencodedParser, function(req, res){
+    //     //get data from view and add to db
+    //     var img = req.body;
+    //     console.log(img);
+    // });
 
     app.get('/add-album', function (req, res) {
         try {
