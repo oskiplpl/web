@@ -45,23 +45,32 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var img;
 module.exports = function (app) {
 
-    app.post('/add-album', upload.single('img'), function (req, res, next) {
+    app.post('/add-album', urlencodedParser, upload.single('img'), function (req, res, next) {
 
-        console.log(req.body);
-        album.img.data = req.file.buffer;
-        album.img.contentType = req.file.mimetype;
-        album.save(function (err, a) {
-            if (err) throw err;
-        });
-        res.sendStatus(200);      
+        console.log(req);
+        // album.img.data = req.file.buffer;
+        // album.img.contentType = req.file.mimetype;
+        // console.log(req.params);
+        // album.artist = "Korn";
+// album.album = "Untitled";
+// album.year = 2007;
+// album.songList = ["Untitled", "Starting Over", "Bitch We Got A Problem", "Evolution", "Hold On", "Kiss"];
+// album.length = '48:47';
+// album.genre = "Nu metal";
+// album.img.data = fs.readFileSync('untitled.jpg');
+// album.img.contentType = 'image/jpg';
+        // album.save(function (err, a) {
+        //     if (err) throw err;
+        // });
+       // res.render('addAlbum');
+        
+        // renderAlbumPage(req, res);        
     });
 
     app.get('/add-album', function (req, res) {
         try {
-            Album.find({}, function (err, doc) {
-                if (err) res.send(err);
-                res.render('addAlbum', { albums: doc });
-            });
+
+            res.render('addAlbum');
         }
         catch (e) {
             res.send(e);
@@ -69,15 +78,7 @@ module.exports = function (app) {
     });
 
     app.get('/albums', function (req, res) {
-        try {
-            Album.find({}, function (err, doc) {
-                if (err) res.send(err);
-                res.render('albums', { albums: doc });
-            });
-        }
-        catch (e) {
-            res.send(e);
-        }
+        renderAlbumPage(req, res);
     });
 
     app.get('/img', function (req, res, next) {
@@ -124,3 +125,15 @@ module.exports = function (app) {
         }
     });
 };
+
+var renderAlbumPage = function (req, res) {
+    try {
+        Album.find({}, function (err, doc) {
+            if (err) res.send(err);
+            res.render('albums', { albums: doc });
+        });
+    }
+    catch (e) {
+        res.send(e);
+    }
+}
