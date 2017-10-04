@@ -14,20 +14,23 @@
     <% include layout.ejs %>
 
         <div class="content">
-            <form id="frmUploader" enctype="multipart/form-data" action="add-album" method="post" >
+                <form class="form-horizontal" role="form"
+                enctype="multipart/form-data" method="POST"
+                action="/add-album">
+            <!-- <form id="frmUploader" enctype="multipart/form-data" action="add-album" method="post" > -->
                 <label for="artist">Artist: </label>
-                <input type="text" id="artist" placeholder="Artist" />
+                <input type="text" id="artist" name="artist" placeholder="Artist" />
                 <label for="album">Album: </label>
-                <input type="text" id="album" placeholder="Album" />
+                <input type="text" id="album" name="album" placeholder="Album" />
                 <label for="year">Year: </label>
-                <input type="text" id="year" placeholder="Year" />
+                <input type="text" id="year" name="year" placeholder="Year" />
                 <label for="length">Length: </label>
-                <input type="text" id="length" placeholder="Length" />
+                <input type="text" id="length" name="length" placeholder="Length" />
                 <label for="genre">Genre: </label>
-                <input type="text" id="genre" placeholder="Genre" />
+                <input type="text" id="genre" name="genre" placeholder="Genre" />
 
-                <input type="file" id="file" name="img" multiple />
-                <input type="submit" name="submit" id="btnSubmit" value="Upload" />
+                <input type="file" id="file" name="img" />
+                <input type="submit" id="btnSubmit"  />
             </form>
         </div>
 </body>
